@@ -1,0 +1,170 @@
+@import "compass";
+@import "compass/reset";
+@import "fonts";
+
+
+/******************************************************************************
+ * Document
+*******************************************************************************/
+::-webkit-scrollbar {
+    height: 0 !important;
+    width: 0 !important;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    color: #1e1e1e;
+    font-family: $helvetica_neue;
+    font-size: 14px;
+    line-height: 1.6;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+/******************************************************************************
+ * Elements
+*******************************************************************************/
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+a {
+    color: #000;
+    @include transition(color 400ms ease);
+
+    &:hover {
+        color: #666;
+    }
+}
+
+em {
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%; 
+}
+
+
+/******************************************************************************
+ * UI
+*******************************************************************************/
+.navigate {
+    @include transition(opacity 200ms ease);
+    bottom: 100px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+
+    &.is-inactive {
+        @include opacity(0);
+    }
+}
+
+
+/******************************************************************************
+ * Slides
+*******************************************************************************/
+.slides {
+    @include transition(transform 400ms ease);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.slides__item {
+    @include opacity(0);
+    @include transition(opacity 1000ms ease);
+    @include transform(translate3d(0, 0, 0));
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    padding: 100px;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+
+    &.is-active {
+        @include opacity(1);
+    }
+}
+
+
+/******************************************************************************
+ * Utility
+*******************************************************************************/
+.-text--center {
+    text-align: center;
+}
+.-text--right {
+    text-align: right;
+}
+.-text--left {
+    text-align: left;
+}
+
+
+.valigner {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.valigner__cell {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+
+/******************************************************************************
+ * Function
+*******************************************************************************/
+.tap {
+    height: 50%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+.tap--bot {
+    bottom: 0;
+    top: auto;
+}
+
+
+/******************************************************************************
+ * Responsive
+*******************************************************************************/
+@media only screen and ( max-width: 1024px ) and ( max-height: 768px ) {
+    .navigate {
+        display: none;
+    }
+
+    .slides__item {
+        padding: 50px;
+    }
+}
